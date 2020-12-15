@@ -1,7 +1,8 @@
 import React from 'react'
 // import tt from './toutiao2react/tt'
 // import Text from './toutiao2react/ui/text/index'
-import RichText from './toutiao2react/ui/rich-text/index'
+// import RichText from './toutiao2react/ui/rich-text/index'
+import View from './toutiao2react/ui/View/index'
 
 type Myprops = {
   value: String
@@ -37,7 +38,7 @@ class App extends React.Component<Myprops, any> {
   render() {
     return (
       <div>
-        <RichText nodes={this.state.nodes} />
+        <View>{this.state.value}</View>
         <button onClick={this.handleCick}>BUTTON</button>
       </div>
 
