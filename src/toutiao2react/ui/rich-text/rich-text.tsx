@@ -11,24 +11,18 @@ class RichText extends onekit_bahavior {
     }
   }
 
-  componentDidMount() {
-    const resu = RichText.nodes2html(this.props.nodes)
-    this.setState({
-      html: resu
-    })
-  }
-
   static getDerivedStateFromProps(props: any, state: any) {
-    if (RichText.nodes2html(props.nodes) !== state.html) {
+
+    if (RichText.nodes2html(props.nodes, props.space) !== state.html) {
       return {
-        html: RichText.nodes2html(props.nodes)
+        html: RichText.nodes2html(props.nodes, props.space)
       }
     }
     return null
   }
 
-  static nodes2html(state: any) {
-    const html = oneutil.STRING.replace(typeof (state) == 'string' ? state : oneutil.HTML.nodes2html(state))
+  public static nodes2html(state: any, space: string): string {
+    const html = oneutil.STRING.replace(typeof (state) == 'string' ? state : oneutil.HTML.nodes2html(state), '', `&${space};`)
     return html
   }
 
